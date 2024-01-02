@@ -1,7 +1,7 @@
 
 # Full-Stack Tic Tac Toe 🎉
 <p align="center">
-  <img width="460" height="300" src="https://imgtr.ee/images/2023/12/31/08ea1d82545e781eaa018ca2cde84457.png">
+  <img width="686" height="334" src="https://imgtr.ee/images/2023/12/31/08ea1d82545e781eaa018ca2cde84457.png">
 </p>
 Dear traveler, I would love to present tic tac toe multiplayer game! 
 
