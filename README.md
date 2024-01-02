@@ -10,17 +10,24 @@ Server
 - go to `server` folder
 - `npm install`
 - `docker-compose up` - to run mongodb
+- create file .env and add `VITE_BE_URL=http://localhost:3000`
 - `npm run start`
 
 Client 
 -
 - go to `client` folder
+- create file .env and add 
+
+MONGO_URL="mongodb://localhost:27017/tic-tac-toe-db"
+SESSION_SECRET="testSecret"
+PORT=3000
+
 - `npm install`
 - `npm run dev`
 
 Some server bulletpoints:
 -
-- Server is based on express, socket.io and mondogb
+- Server is based on express, socket.io and mongoDB
 - Mongodb dockerized
 - Whole game logic handled on server side (all moves, board, etc.)
 - User auth based on express sessions
