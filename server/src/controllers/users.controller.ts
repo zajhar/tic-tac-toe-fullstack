@@ -1,6 +1,17 @@
 import { RequestHandler } from "express";
 import UserModel from "../models/user.model";
 import bcrypt from "bcrypt";
+import {
+  Body,
+  Controller,
+  Get,
+  Path,
+  Post,
+  Tags,
+  Query,
+  Route,
+  SuccessResponse,
+} from "tsoa";
 
 export const getAuthenticatedUser: RequestHandler = async (req, res, next) => {
   try {
@@ -116,3 +127,45 @@ export const logout: RequestHandler = (req, res, next) => {
     }
   });
 };
+
+@Tags("User")
+@Route("users2")
+export class UsersController2 extends Controller {
+  @Get("{userId}")
+  public async getUser(
+    @Path() userId: number,
+    @Query() name?: string
+  ): Promise<null> {
+    return null;
+  }
+
+  @SuccessResponse("201", "Created") // Custom success response
+  @Post()
+  public async createUser(
+    @Body() requestBody: any
+  ): Promise<void> {
+    this.setStatus(201); // set return status 201
+    return;
+  }
+}
+
+
+@Route("users")
+export class UsersController extends Controller {
+  @Get("{userId}")
+  public async getUser(
+    @Path() userId: number,
+    @Query() name?: string
+  ): Promise<null> {
+    return null;
+  }
+
+  @SuccessResponse("201", "Created") // Custom success response
+  @Post()
+  public async createUser(
+    @Body() requestBody: any
+  ): Promise<void> {
+    this.setStatus(201); // set return status 201
+    return;
+  }
+}

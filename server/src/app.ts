@@ -1,6 +1,6 @@
 import { config } from "dotenv";
 config();
-import express from "express";
+import express, { Request, Response } from "express";
 import usersRoutes from "./routes/users.route";
 import gameRoomsRoutes from "./routes/gameRooms.route";
 import morgan from "morgan";
@@ -14,6 +14,7 @@ import connectDB from "./config/db";
 import registerGameHandler from "./socketHandlers/gameHandler.socket";
 import registerLobbyHandler from "./socketHandlers/lobbyHandler.socket";
 import registerSocketAuthMiddleware from "./middleware/socket_auth.middleware";
+import swaggerUi from "swagger-ui-express";
 const PORT = process.env.PORT;
 
 declare module "express-session" {
@@ -44,6 +45,12 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
 app.use(sessionMiddleware);
+
+app.use("/docs", swaggerUi.serve, async (_req: Request, res: Response) => {
+  return res.send(
+    swaggerUi.generateHTML(await import("../build/swagger.json"))
+  );
+});
 
 app.use("/api/users", usersRoutes);
 app.use("/api/gamerooms", gameRoomsRoutes);

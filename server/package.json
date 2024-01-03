@@ -9,6 +9,7 @@
     "prebuild": "npm run swagger",
     "lint": "eslint . --ext .ts",
     "swagger": "tsoa spec",
+    "build": "tsoa spec && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
